@@ -2,6 +2,7 @@ import 'package:aula_dio/pages/dados_cadastrais.dart';
 import 'package:aula_dio/pages/card_page.dart';
 import 'package:aula_dio/pages/list_view.dart';
 import 'package:aula_dio/pages/list_view_horizontal.dart';
+import 'package:aula_dio/pages/tarefa_page.dart';
 import 'package:aula_dio/shared/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,8 @@ class _MainPageState extends State<MainPage> {
                 ImageAssets(),
                 // ListViewH(),
                 ListViewPage(),
-                ListViewHorizontal()
+                ListViewHorizontal(),
+                TarefaPage()
               ],
             ),
           ),
@@ -56,7 +58,8 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(label: "page1", icon: Icon(Icons.home)),            
             BottomNavigationBarItem(label: "page2", icon: Icon(Icons.add)),
             BottomNavigationBarItem(label: "page3", icon: Icon(Icons.person)),
-            BottomNavigationBarItem(label: "page4", icon: Icon(Icons.list)),
+            BottomNavigationBarItem(label: "page4", icon: Icon(Icons.image)),
+            BottomNavigationBarItem(label: "Tarefas", icon: Icon(Icons.list)),
           ])
         ],
       ),
