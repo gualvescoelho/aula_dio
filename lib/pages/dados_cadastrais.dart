@@ -1,5 +1,5 @@
-import 'package:aula_dio/pages/repositories/linguagens_repository.dart';
-import 'package:aula_dio/pages/repositories/nivel_repository.dart';
+import 'package:aula_dio/repositories/linguagens_repository.dart';
+import 'package:aula_dio/repositories/nivel_repository.dart';
 import 'package:aula_dio/shared/widgets/text_label.dart';
 import 'package:flutter/material.dart';
 

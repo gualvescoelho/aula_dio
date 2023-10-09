@@ -1,10 +1,12 @@
 import 'package:aula_dio/pages/dados_cadastrais.dart';
 import 'package:aula_dio/pages/card_page.dart';
+import 'package:aula_dio/pages/list_view.dart';
+import 'package:aula_dio/pages/list_view_horizontal.dart';
 import 'package:aula_dio/shared/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
-import 'pagina2.dart';
-import 'pagina3.dart';
+import 'image_assets.dart';
+import 'list_view_h.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -35,12 +37,15 @@ class _MainPageState extends State<MainPage> {
               },
               children: const [
                 CardPage(),
-                Pagina2Page(),
-                Pagina3Page(),
+                ImageAssets(),
+                // ListViewH(),
+                ListViewPage(),
+                ListViewHorizontal()
               ],
             ),
           ),
           BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             onTap: (value) {
               setState(() {
                 controller.jumpToPage(value);
@@ -51,6 +56,7 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(label: "page1", icon: Icon(Icons.home)),            
             BottomNavigationBarItem(label: "page2", icon: Icon(Icons.add)),
             BottomNavigationBarItem(label: "page3", icon: Icon(Icons.person)),
+            BottomNavigationBarItem(label: "page4", icon: Icon(Icons.list)),
           ])
         ],
       ),
