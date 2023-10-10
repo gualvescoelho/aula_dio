@@ -1,4 +1,5 @@
 import 'package:aula_dio/pages/login_page.dart';
+import 'package:aula_dio/pages/numeros_aleatorios_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../pages/dados_cadastrais.dart';
@@ -119,6 +120,25 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
+               },
+            ),
+            const Divider(),
+            const SizedBox(height: 10,),
+            InkWell(
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.numbers),
+                    SizedBox(width: 5,),
+                    Text("Gerador de números"),
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (bc) => NumerosAleatoriosPage()));
                },
             ),
             const Divider(),
