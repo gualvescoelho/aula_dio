@@ -1,3 +1,4 @@
+import 'package:aula_dio/pages/configuracoes_page.dart';
 import 'package:aula_dio/pages/login_page.dart';
 import 'package:aula_dio/pages/numeros_aleatorios_page.dart';
 import 'package:flutter/material.dart';
@@ -113,23 +114,6 @@ class CustomDrawer extends StatelessWidget {
                 width: double.infinity,
                 child: const Row(
                   children: [
-                    Icon(Icons.album),
-                    SizedBox(width: 5,),
-                    Text("Configurações"),
-                  ],
-                ),
-              ),
-              onTap: () {
-               },
-            ),
-            const Divider(),
-            const SizedBox(height: 10,),
-            InkWell(
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                width: double.infinity,
-                child: const Row(
-                  children: [
                     Icon(Icons.numbers),
                     SizedBox(width: 5,),
                     Text("Gerador de números"),
@@ -143,6 +127,26 @@ class CustomDrawer extends StatelessWidget {
             ),
             const Divider(),
             const SizedBox(height: 10,),
+            InkWell(
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.album),
+                    SizedBox(width: 5,),
+                    Text("Configurações"),
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context, MaterialPageRoute(builder: (bc) => ConfiguracoesPage()));
+               },
+            ),
+            const Divider(),
+            const SizedBox(height: 10,),
+            
             InkWell(
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),

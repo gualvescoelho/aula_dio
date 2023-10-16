@@ -1,5 +1,6 @@
 import 'package:aula_dio/repositories/linguagens_repository.dart';
 import 'package:aula_dio/repositories/nivel_repository.dart';
+import 'package:aula_dio/services/app_storage_service.dart';
 import 'package:aula_dio/shared/widgets/text_label.dart';
 import 'package:flutter/material.dart';
 
@@ -19,16 +20,32 @@ class _TelaDadosState extends State<TelaDados> {
   var nivelSelecionado = "";
   var linguagensRepository = LinguagensRepository();
   var linguagens = [];
-  var linguagensSelecionadas = [];
+  List<String> linguagensSelecionadas = [];
   double salarioEscolhido = 0;
   int tempoExperiencia = 0;
-
+  AppStorageService storage = AppStorageService();
   bool salvando = false;
 
   void initState() {
     niveis = nivelRepository.retornaNiveis();
     linguagens = linguagensRepository.retornaLinguagens();
     super.initState();
+    carregarDados();
+  }
+
+  carregarDados() async {
+    nomeController.text = await storage.getDadosCadastraisNome();
+    nascimentoController.text = await storage.getDadosCadastraisDataNascimento();
+    if(nascimentoController.text.isNotEmpty){
+      dataNascimento = DateTime.parse(nascimentoController.text);
+    }
+    nivelSelecionado = await storage.getDadosCadastraisNivelExperiencia();
+    linguagensSelecionadas = await storage.getDadosCadastraisLinguagens();
+    tempoExperiencia = await storage.getDadosCadastraisTempoExperiencia();
+    salarioEscolhido = await storage.getDadosCadastraisSalario();
+    setState(() {
+      
+    });
   }
 
   List<DropdownMenuItem<int>> returnItens(int qtdMaxima) {
@@ -66,7 +83,7 @@ class _TelaDadosState extends State<TelaDados> {
                 lastDate: DateTime(2023,10,23));
                 if(nascimento != null){
                   nascimentoController.text = nascimento.toString();
-                  dataNascimento = nascimento;
+                  dataNascimento = DateTime.parse(nascimentoController.text);
                 }
               },
             ),
@@ -123,7 +140,7 @@ class _TelaDadosState extends State<TelaDados> {
                 });
               }),
 
-            TextButton(onPressed: (){
+            TextButton(onPressed: () async {
               setState(() {
                 salvando = false;
               });
@@ -168,6 +185,13 @@ class _TelaDadosState extends State<TelaDados> {
                 );
                 return;
               }
+
+              await storage.setDadosCadastraisNome(nomeController.text);
+              await storage.setDadosCadastraisDataNascimento(dataNascimento!);
+              await storage.setDadosCadastraisNivelExperiencia(nivelSelecionado);
+              await storage.setDadosCadastraisLinguagens(linguagensSelecionadas);
+              await storage.setDadosCadastraisTempoExperiencia(tempoExperiencia);
+              await storage.setDadosCadastraisSalario(salarioEscolhido);
 
               setState(() {
                 salvando = !salvando;
